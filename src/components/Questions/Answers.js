@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { shuffle } from '../../utils';
 
 export default class Answers extends Component {
   constructor(props){
@@ -9,33 +10,19 @@ export default class Answers extends Component {
   }
 
   componentDidMount() {
-    this.shuffle(this.props.incorrect, this.props.correct)
-  }
-
-  shuffle(incorrect, correct) {
-    const answers = [correct, ...incorrect];
-    let currentIndex = answers.length, temporaryValue, randomIndex;
-  
-    while (0 !== currentIndex) {
-  
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-  
-      temporaryValue = answers[currentIndex];
-      answers[currentIndex] = answers[randomIndex];
-      answers[randomIndex] = temporaryValue;
-    }
+    const answers = shuffle(this.props.incorrect, this.props.correct);
     this.setState({answers});
   }
   
   render() {
     const {answers} = this.state;
+    const multiChoice = ['A', 'B', 'C', 'D'];
     return (
-      <div>
+      <div className='choices-container'>
         {answers.map((answer,i) => (
-          <ul key={answer}>
-            <li>{answer}</li>
-          </ul>
+          <div key={answer} className={`choice-container ${multiChoice[i]}`}>
+            <h5 className='choice'><span className='letter'>{multiChoice[i]}: </span> {answer}</h5>
+          </div>
         ))}
       </div>
     )

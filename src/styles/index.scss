@@ -1,4 +1,7 @@
+@import 'breakpoints';
+@import 'colors';
 
+@import '../components/Questions/Question';
 
 body {
   margin: 0 auto;
@@ -13,4 +16,48 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h3 {
+  background-image: url(../images/question.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: table;
+  vertical-align: middle;
+  font-size: 17px;
+  line-height: 22px;
+  min-height: 80px;
+  font-family: Arial,Verdana,"Helvetica CY",sans-serif;
+  margin-bottom: 20px;
+  width: 100%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h5 {
+  background-image: url(../images/choices.webp);
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 100% 310px;
+  display: table;
+  width: 340px;
+  font-size: 17px;
+  line-height: 22px;
+  overflow: hidden;
+  font-family: Arial,Verdana,"Helvetica CY",sans-serif;
+  margin: 0 auto;
+  color: #fff;
+
+  &:hover {
+    background-position: 0 -51px;
+    cursor: pointer;
+    color: #000;
+  }
+
+}
+
+.letter {
+  color: $orange;
 }
