@@ -41,3 +41,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 * Highscore table
 * Add 50/50, phone a friend, ask the audience using socket.io(?) features
 * More questions, graphics with fun facts relating to the question
+* More Responsiveness-- not compatible with mobile
