@@ -18,6 +18,8 @@ A Create React App.
 
 To run project
 
+### `npm install`
+
 ### `npm start`
 
 Runs the app in the development mode.\
