@@ -1,11 +1,11 @@
 import React from 'react'
 
-import Question from './Question';
+import Questions from './Questions';
 
 export default function index() {
   return (
     <div>
-      <Question />
+      <Questions />
     </div>
   )
 }
