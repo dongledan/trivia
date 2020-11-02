@@ -1,7 +1,7 @@
 @import 'breakpoints';
 @import 'colors';
 
-@import '../components/Questions/Question';
+@import '../components/Questions/Questions';
 
 body {
   margin: 0 auto;
@@ -11,6 +11,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   max-width: 1024px;
+  min-width: 1000px;
+  background: $pacificblue;
+  color: #fff;
 }
 
 code {
@@ -47,7 +50,7 @@ h5 {
   line-height: 22px;
   overflow: hidden;
   font-family: Arial,Verdana,"Helvetica CY",sans-serif;
-  margin: 0 auto;
+  margin: 5px auto;
   color: #fff;
 
   &:hover {
@@ -60,4 +63,10 @@ h5 {
 
 .letter {
   color: $orange;
+}
+
+.invi {
+  background: none;
+  outline: none;
+  border: none;
 }

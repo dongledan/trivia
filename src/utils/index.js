@@ -1,7 +1,7 @@
 // src/components/Questions
 
 export function shuffle(incorrect, correct) {
-  const answers = correct ? [correct, ...incorrect] : incorrect;
+  const answers = correct ? [correct, ...incorrect] : [...incorrect];
   let currentIndex = answers.length, temporaryValue, randomIndex;
 
   while (0 !== currentIndex) {
