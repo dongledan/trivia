@@ -1,3 +1,9 @@
+<p align='center'>
+  <a href="https://barisloadedapp.com/">
+    <img src="./src/images/logo.png" width=150/>
+  </a>
+</p>
+
 # Who Wants To Answer 10 Questions?
 
 America's hottest game, Who Wants To Answer 10 Questions is just like it's lesser known cousin-- Who Wants To Be A Millionaire but none of the prizes! Come check out your trivia skills with Who Wants To Answer 10 Questions. What are you waiting for? There's 10 questions that need to be answered!
@@ -42,3 +48,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 * Add 50/50, phone a friend, ask the audience using socket.io(?) features
 * More questions, graphics with fun facts relating to the question
 * More Responsiveness-- not compatible with mobile
+* Tests, tests, tests, and more tests
