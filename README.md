@@ -15,7 +15,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 * TODO
 
-## Prompt: Tandem for 400!
+## Prompt: [Tandem](https://madeintandem.com/) for 400!
 
 ### Assumptions
 
