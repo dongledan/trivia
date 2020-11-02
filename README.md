@@ -6,7 +6,7 @@
 
 # Who Wants To Answer 10 Questions?
 
-America's hottest game, Who Wants To Answer 10 Questions is just like it's lesser known cousin-- Who Wants To Be A Millionaire but none of the prizes! Come check out your trivia skills with Who Wants To Answer 10 Questions. What are you waiting for? There's 10 questions that need to be answered!
+America's hottest game, <b>Who Wants To Answer 10 Questions</b> is just like it's lesser known cousin-- <b>Who Wants To Be A Millionaire</b> but none of the prizes! Come check out your trivia skills with <b>Who Wants To Answer 10 Questions</b>. What are you waiting for? There's 10 questions that need to be answered!
 
 ## Available Scripts
 
@@ -49,3 +49,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 * More questions, graphics with fun facts relating to the question
 * More Responsiveness-- not compatible with mobile
 * Tests, tests, tests, and more tests
+
+Now I know the top speed of house cat is 31mph! And a bison and cow combo is beefalo! Thanks <b>Who Wants To Answer 10 Questions</b>! This hot new trivia game changed my life, and it can change yours too!
