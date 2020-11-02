@@ -50,4 +50,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 * More Responsiveness-- not compatible with mobile
 * Tests, tests, tests, and more tests
 
-Now I know the top speed of house cat is 31mph (wow!) & a bison and cow combo is beefalo (hilarious!) Thanks <b>Who Wants To Answer 10 Questions</b>! This hot new trivia game changed my life, and it can change yours too!
+Now I know the top speed of house cat is 31mph (wow!) & a bison and cow hybrid combo is called a beefalo (hilarious!). Thanks <b>Who Wants To Answer 10 Questions</b>! This hot new trivia game changed my life, and it can change yours too!
