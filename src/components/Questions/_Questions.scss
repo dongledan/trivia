@@ -20,6 +20,18 @@
             padding: 10px 20px;
           }
         }
+        .check {
+          margin-top: 20px;
+          font-size: 1.188em;
+          line-height: 1.5em;
+          width: 100%;
+          text-align: center;
+          min-height: 150px;
+
+          .next-btn-container {
+            margin: 20px auto;
+          }
+        }
       }
     }
   }

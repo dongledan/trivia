@@ -4,11 +4,12 @@ import data from '../../tandem_trivia_data.json';
 import { shuffle } from '../../utils';
 
 import Question from './Question';
+import Results from './Results';
 
 
 export default class Questions extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       questions: [],
       currIdx: 0,
@@ -16,6 +17,7 @@ export default class Questions extends Component {
       score: 0,
     }
     this.onClickNext = this.onClickNext.bind(this);
+    this.checkAnswer = this.checkAnswer.bind(this);
   }
 
   componentDidMount() {
@@ -26,27 +28,30 @@ export default class Questions extends Component {
     this.setState({questions: chosen, currentQ: current});
   }
 
-  onClickNext(idx, evt) {
+  onClickNext(idx) {
     setTimeout(() => {
-      if (evt.target.getAttribute('value') === this.state.currentQ.correct) {
-        const score = this.state.score + 1;
-        this.setState({score});
-      }
       const currIdx = idx + 1;
       const currentQ = this.state.questions[currIdx]
       this.setState({currIdx, currentQ});
     }, 100);
   }
 
-  handleSubmit() {
-
+  checkAnswer(evt) {
+    if (evt.target.getAttribute('value') === this.state.currentQ.correct) {
+      const score = this.state.score + 1;
+      this.setState({score});
+    }
   }
 
   render() {
     const { currentQ, currIdx, score } = this.state;
     return (
       <div className='question-container'>
-        <Question currentQ={currentQ} currIdx={currIdx} onClickNext={this.onClickNext} score={score} />
+        {currentQ ? 
+          <Question currentQ={currentQ} currIdx={currIdx} onClickNext={this.onClickNext} score={score} checkAnswer={this.checkAnswer} />
+          :
+          <Results score={score} />
+        }
     </div>
     )   
   }
