@@ -31,3 +31,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 * Questions with their multiple choice options must be displayed one at a time. Questions should not repeat in a round.
 * A user can select only 1 answer out of the 4 possible answers.
 * The correct answer must be revealed after a user has submitted their answer A user can see the score they received at the end of the round
+
+### Known Issues
+* Clicking on individual letter vs answer will throw an error
+* Once clicking on an answer choice, there is no possibility to go back
+
+### Future Updates
+* Adding a countdown timer for each question to increase pressure for no reason
+* Highscore table
+* Add 50/50, phone a friend, ask the audience using socket.io(?) features
+* More questions, graphics with fun facts relating to the question
