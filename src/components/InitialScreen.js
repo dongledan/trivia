@@ -11,7 +11,7 @@ export default function InitialScreen(props) {
         Play individually or in groups.  If you play in groups, you will want to play multiple games, or you may want to alternate questions between the groups.
         </li>
         <li>
-        Start the game and being your journey to answer 10 questions.
+        Start the game and begin your journey to answer 10 questions.
         </li>
         <li>
         Press  Final Answer?  and then click the appropriate answer box.
