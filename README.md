@@ -1,5 +1,5 @@
 <p align='center'>
-  <a href='https://trivia-one.vercel.app/' rel='noreferrer noopener' target='_blank'>
+  <a href='https://trivia-one.vercel.app/'>
     <img src="./src/images/logo.png" width=150/>
   </a>
 </p>
