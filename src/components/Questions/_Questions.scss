@@ -1,5 +1,4 @@
 .question-container {
-
   .question {
     width: 100%;
 
@@ -29,8 +28,45 @@
             padding: 10px 20px;
           }
         }
+
+        .lifelines {
+          display: flex;
+          align-items: center;
+          margin: 10px 0;
+          width: 100%;
+          justify-content: center;
+
+          @include mobile {
+            justify-content: flex-start;
+          }
+        
+          .icon {
+            font-size: 2em;
+            width: 60px;
+            height: 60px;
+            background: #234057;
+            border: 2px solid #c9cbe1;
+            color: #ea6400;         
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            margin: 10px;
+
+            &:hover {
+              background: $orange;
+              color: #000;
+              border: 2px solid $green;
+            }
+          }
+
+          .half {
+            font-size: 1.188em;
+          }
+        }
+
         .check {
-          margin-top: 20px;
           font-size: 1.188em;
           line-height: 1.5em;
           width: 100%;

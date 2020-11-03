@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {IoIosPeople, IoIosCall} from 'react-icons/io'
 import Modal from 'react-modal';
 import { shuffle } from '../../utils';
 
@@ -57,6 +58,12 @@ export default class Answers extends Component {
            
           </div>
         ))}
+
+        <div className="lifelines">
+            <div className="icon half">50/50</div>
+            <div className="icon"><IoIosCall /></div>
+            <div className="icon"><IoIosPeople /></div>
+        </div>
 
         {answered ? 
         <div className="check">
