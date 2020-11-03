@@ -1,10 +1,14 @@
 <p align='center'>
-  <img src="./src/images/logo.png" width=150/>
+  <a href='https://trivia-one.vercel.app/' rel='noreferrer noopener' target='_blank'>
+    <img src="./src/images/logo.png" width=150/>
+  </a>
 </p>
 
 # Who Wants To Answer 10 Questions?
 
 America's hottest game, <b>Who Wants To Answer 10 Questions</b> is just like it's lesser known cousin-- <b>Who Wants To Be A Millionaire</b> but none of the prizes! Come check out your trivia skills with <b>Who Wants To Answer 10 Questions</b>. What are you waiting for? There's 10 questions that need to be answered!
+
+## [Check Out Who Wants To Answer 10 Questions Here - Live](https://trivia-one.vercel.app/)
 
 ## Tech Stack
 * Javascript
@@ -12,7 +16,7 @@ America's hottest game, <b>Who Wants To Answer 10 Questions</b> is just like it'
 * HTML
 * CSS/SASS
 
-A Create React App.
+A [Create React App](https://create-react-app.dev/) deployed with [Vercel](https://vercel.com/about)
 
 ## Available Scripts
 
