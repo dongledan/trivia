@@ -64,11 +64,19 @@ h5 {
   color: #fff;
 
   &:hover {
-    background-position: 0 -51px;
     cursor: pointer;
-    color: #000;
+    transform: translateY(2px)
   }
+}
 
+.chosen {
+  background-position: 0 -51px;
+  color: #000;
+}
+
+.correct {
+  background-position: 0 -133px;
+  color: #000;
 }
 
 .letter {

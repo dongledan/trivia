@@ -86,7 +86,7 @@ export default class Answers extends Component {
         {answers.map((answer,i) => (
           <div key={answer} className={`choice-container ${multiChoice[i]}`}>
             <button className="invi" disabled={answered} onClick={evt => {checkAnswer(evt); this.handleAnswered(evt); this.openModal()}}>
-              <h5 className='choice' value={answer}><span className='letter'>{multiChoice[i]}: </span> {answer}</h5>
+              <h5 className={`choice ${answered && myChoice === answer ? 'chosen' : ''} ${answered && this.props.correct === answer ? 'correct' : ''}`} value={answer}><span className='letter'>{multiChoice[i]}: </span> {answer}</h5>
             </button>
           </div>
         ))}
@@ -119,7 +119,7 @@ export default class Answers extends Component {
           onRequestClose={() => this.closePhoneAFriend()}
           contentLabel="Friend Modal"
         >
-          <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer'}} onClick={() => {this.closeModal()}}>Ask a friend for help. <br/> <br/> *Reminder* Google is not a friend!</button>
+          <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer'}} onClick={() => {this.closeModal()}}>Call someone random in your contacts.</button>
         </Modal>
         <Modal
           isOpen={isAskAudienceOpen}
