@@ -12,9 +12,10 @@ export default class Question extends Component {
   }
 
   render() {
-    const { currentQ, currIdx, onClickNext, score, checkAnswer } = this.props;
+    const { currentQ, currIdx, onClickNext, checkAnswer } = this.props;
     return (
       <div className="question">
+          <div>{this.props.score}</div>
           <h3>{currIdx+1}. {currentQ.question}</h3>
           <div className="answers-container">
           {currentQ.incorrect ?

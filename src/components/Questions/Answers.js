@@ -10,7 +10,10 @@ export default class Answers extends Component {
       answers: [],
       modalIsOpen: false,
       answered: false,
-      myChoice: ''
+      myChoice: '',
+      fiftyFifty: false,
+      phoneAFriend: false,
+      askAudience: false
     }
   }
 
@@ -20,11 +23,27 @@ export default class Answers extends Component {
   }
 
   changeAnswers() {
-    this.setState({ answered: false , myChoice: ''})
+    this.setState({ answered: false , myChoice: '', answers: []})
     setTimeout(() => {
       const answers = shuffle(this.props.incorrect, this.props.correct);
       this.setState({answers});
     }, 100);
+  }
+
+  handleFiftyFifty() {
+    let choicesEliminated = 0;
+    let answers = this.state.answers;
+    let random = shuffle([0, 1, 2, 3]);
+
+    for ( let i = 0; i < 4; i++) {
+      const rdmIdx = random[i];
+      if (choicesEliminated === 2) break;
+      else if (answers[rdmIdx] !== this.props.correct) {
+        answers[rdmIdx] = '';
+        choicesEliminated += 1;
+      }
+    }
+    this.setState({answers, fiftyFifty: true});
   }
 
   handleAnswered(evt) {
@@ -41,28 +60,22 @@ export default class Answers extends Component {
   }
   
   render() {
-    const {answers, modalIsOpen, answered, myChoice } = this.state;
-    const {onClickNext, currIdx, checkAnswer} = this.props;
+    const { answers, modalIsOpen, answered, myChoice } = this.state;
+    const { onClickNext, currIdx, checkAnswer } = this.props;
     const multiChoice = ['A', 'B', 'C', 'D'];
     return (
       <div className='choices-container'>
         {answers.map((answer,i) => (
           <div key={answer} className={`choice-container ${multiChoice[i]}`}>
-            {myChoice.length <= 0 ?
-             <button className="invi" onClick={evt => {checkAnswer(evt); this.handleAnswered(evt); this.openModal()}}>
-             <h5 className='choice' value={answer}><span className='letter'>{multiChoice[i]}: </span> {answer}</h5>
+            <button className="invi" disabled={answered} onClick={evt => {checkAnswer(evt); this.handleAnswered(evt); this.openModal()}}>
+              <h5 className='choice' value={answer}><span className='letter'>{multiChoice[i]}: </span> {answer}</h5>
             </button>
-            :
-            <h5 className='choice' value={answer}><span className='letter'>{multiChoice[i]}: </span> {answer}</h5>
-            }
-           
           </div>
         ))}
-
         <div className="lifelines">
-            <div className="icon half">50/50</div>
-            <div className="icon"><IoIosCall /></div>
-            <div className="icon"><IoIosPeople /></div>
+            <button disabled={this.state.fiftyFifty} className={`icon half ${this.state.fiftyFifty ? 'disabled' : ''}`} onClick={() => this.handleFiftyFifty()}>50:50</button>
+            <button className="icon"><IoIosCall /></button>
+            <button className="icon"><IoIosPeople /></button>
         </div>
 
         {answered ? 
