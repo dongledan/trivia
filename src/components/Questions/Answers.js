@@ -13,7 +13,9 @@ export default class Answers extends Component {
       myChoice: '',
       fiftyFifty: false,
       phoneAFriend: false,
-      askAudience: false
+      isPhoneAFriendOpen: false,
+      askAudience: false,
+      isAskAudienceOpen: false
     }
   }
 
@@ -55,12 +57,28 @@ export default class Answers extends Component {
     this.setState({ modalIsOpen: true });
   }
 
+  openPhoneAFriend() {
+    this.setState({ isPhoneAFriendOpen: true });
+  }
+
+  openAskAudience(){
+    this.setState({ isAskAudienceOpen: true });
+  }
+
   closeModal() {
     this.setState({ modalIsOpen: false, answered: true });
   }
+
+  closePhoneAFriend() {
+    this.setState({ isPhoneAFriendOpen: false, phoneAFriend: true });
+  }
+
+  closeAskAudience() {
+    this.setState({ isAskAudienceOpen: false, askAudience: true });
+  }
   
   render() {
-    const { answers, modalIsOpen, answered, myChoice } = this.state;
+    const { answers, modalIsOpen, answered, myChoice, fiftyFifty, phoneAFriend, askAudience, isPhoneAFriendOpen, isAskAudienceOpen } = this.state;
     const { onClickNext, currIdx, checkAnswer } = this.props;
     const multiChoice = ['A', 'B', 'C', 'D'];
     return (
@@ -73,9 +91,9 @@ export default class Answers extends Component {
           </div>
         ))}
         <div className="lifelines">
-            <button disabled={this.state.fiftyFifty} className={`icon half ${this.state.fiftyFifty ? 'disabled' : ''}`} onClick={() => this.handleFiftyFifty()}>50:50</button>
-            <button className="icon"><IoIosCall /></button>
-            <button className="icon"><IoIosPeople /></button>
+            <button disabled={fiftyFifty || answered} className={`icon half ${fiftyFifty ? 'disabled' : ''}`} onClick={() => this.handleFiftyFifty()}>50:50</button>
+            <button disabled={phoneAFriend || answered} className={`icon ${phoneAFriend ? 'disabled' : ''}`} onClick={() => this.openPhoneAFriend()}><IoIosCall /></button>
+            <button disabled={askAudience || answered} className={`icon ${askAudience ? 'disabled' : ''}`} onClick={() => this.openAskAudience()}><IoIosPeople /></button>
         </div>
 
         {answered ? 
@@ -91,9 +109,25 @@ export default class Answers extends Component {
           isOpen={modalIsOpen}
           style={customStyles}
           onRequestClose={() => this.closeModal()}
-          contentLabel="Example Modal"
+          contentLabel="You Sure? Modal"
         >
           <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer'}} onClick={() => {this.closeModal()}}>Final Answer?</button>
+        </Modal>
+        <Modal
+          isOpen={isPhoneAFriendOpen}
+          style={customStyles}
+          onRequestClose={() => this.closePhoneAFriend()}
+          contentLabel="Friend Modal"
+        >
+          <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer'}} onClick={() => {this.closeModal()}}>Ask a friend for help. <br/> <br/> *Reminder* Google is not a friend!</button>
+        </Modal>
+        <Modal
+          isOpen={isAskAudienceOpen}
+          style={customStyles}
+          onRequestClose={() => this.closeAskAudience()}
+          contentLabel="Audience Modal"
+        >
+          <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer'}} onClick={() => {this.closeModal()}}>Survey everyone in the room. <br /> <br/> Audience we need your help!</button>
         </Modal>
       </div>
     )
@@ -103,8 +137,8 @@ export default class Answers extends Component {
 const customStyles = {
   content: {
     background: '#000034',
-    width: '200px',
-    height: '100px',
+    width: '250px',
+    height: '150px',
     top: '50%',
     left: '50%',
     right: 'auto',
