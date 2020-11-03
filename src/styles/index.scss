@@ -14,7 +14,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   max-width: 1024px;
-  min-width: 1000px;
   background: $pacificblue;
   color: #fff;
 }
@@ -40,6 +39,12 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @include mobile {
+    justify-content: flex-start;
+    width: calc(100% - 20px);
+    padding-left: 20px;
+  }
 }
 
 h5 {

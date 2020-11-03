@@ -5,15 +5,34 @@
   justify-content: center;
   margin-top: 30px;
 
+  @include mobile {
+    margin-left: 20px;
+    margin-right: 20px;
+    justify-content: flex-start;
+  }
+
   .title {
     font-size: 2.5em;
     font-weight: 600;
     margin-bottom: 10px;
+
+    @include mobile {
+      font-size: 2em;
+      text-align: left;
+      width: 100%;
+    }
   }
 
   .subtitle {
     font-size: 1.5em;
     margin-bottom: 10px;
     font-weight: 300;
+    text-align: center;
+
+    @include mobile {
+      font-size: 1.188em;
+      width: 100%;
+      text-align: left;
+    }
   }
 }
