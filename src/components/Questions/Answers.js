@@ -119,7 +119,7 @@ export default class Answers extends Component {
           onRequestClose={() => this.closePhoneAFriend()}
           contentLabel="Friend Modal"
         >
-          <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer'}} onClick={() => {this.closeModal()}}>Call someone random in your contacts.</button>
+          <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer'}} onClick={() => {this.closePhoneAFriend()}}>Call someone random in your contacts</button>
         </Modal>
         <Modal
           isOpen={isAskAudienceOpen}
@@ -127,7 +127,7 @@ export default class Answers extends Component {
           onRequestClose={() => this.closeAskAudience()}
           contentLabel="Audience Modal"
         >
-          <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer'}} onClick={() => {this.closeModal()}}>Survey everyone in the room. <br /> <br/> Audience we need your help!</button>
+          <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer'}} onClick={() => {this.closeAskAudience()}}>Survey everyone in the room. <br /> <br/> Audience we need your help!</button>
         </Modal>
       </div>
     )
