@@ -86,7 +86,7 @@ export default class Answers extends Component {
         {answers.map((answer,i) => (
           <div key={answer} className={`choice-container ${multiChoice[i]}`}>
             <button className="invi" disabled={answered} onClick={evt => {checkAnswer(evt); this.handleAnswered(evt); this.openModal()}}>
-              <h5 className={`choice ${answered && myChoice === answer ? 'chosen' : ''} ${answered && this.props.correct === answer ? 'correct' : ''}`} value={answer}><span className='letter'>{multiChoice[i]}: </span> {answer}</h5>
+              <h5 className={`choice ${answered && myChoice === answer && myChoice.length > 0 ? 'chosen' : ''} ${answered && this.props.correct === answer ? 'correct' : ''}`} value={answer}><span className='letter' value={answer}>{multiChoice[i]}: </span> {answer}</h5>
             </button>
           </div>
         ))}
