@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 
 import Trivia from '../src/components/Trivia';
 import InitialScreen from '../src/components/InitialScreen';
