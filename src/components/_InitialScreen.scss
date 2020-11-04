@@ -1,10 +1,15 @@
 li {
-  font-size: 1.188em;
+  font-size: 1.1em;
   margin: 15px 0;
   line-height: 1.5em;
+
+  @include mobile {
+    font-size: 1em;
+  }
 }
 
 .start-btn-container {
+  padding-top: 10px;
   width: 100%;
   margin: auto;
   text-align: center;

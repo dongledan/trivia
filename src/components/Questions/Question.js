@@ -7,14 +7,15 @@ export default class Question extends Component {
     super(props);
     this.setState = {
       question: {},
-      currIdx: 0
+      currIdx: 0,
     }
   }
 
   render() {
-    const { currentQ, currIdx, onClickNext, score, checkAnswer } = this.props;
+    const { currentQ, currIdx, onClickNext, checkAnswer, score } = this.props;
     return (
       <div className="question">
+          <div className="score">You got <span className="actual">{score}</span> correct</div>
           <h3>{currIdx+1}. {currentQ.question}</h3>
           <div className="answers-container">
           {currentQ.incorrect ?

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {IoIosPeople, IoIosCall} from 'react-icons/io'
 import Modal from 'react-modal';
 import { shuffle } from '../../utils';
 
@@ -9,7 +10,12 @@ export default class Answers extends Component {
       answers: [],
       modalIsOpen: false,
       answered: false,
-      myChoice: ''
+      myChoice: '',
+      fiftyFifty: false,
+      phoneAFriend: false,
+      isPhoneAFriendOpen: false,
+      askAudience: false,
+      isAskAudienceOpen: false
     }
   }
 
@@ -19,11 +25,27 @@ export default class Answers extends Component {
   }
 
   changeAnswers() {
-    this.setState({ answered: false , myChoice: ''})
+    this.setState({ answered: false , myChoice: '', answers: []})
     setTimeout(() => {
       const answers = shuffle(this.props.incorrect, this.props.correct);
       this.setState({answers});
-    }, 100);
+    }, 200);
+  }
+
+  handleFiftyFifty() {
+    let choicesEliminated = 0;
+    let answers = this.state.answers;
+    let random = shuffle([0, 1, 2, 3]);
+
+    for ( let i = 0; i < 4; i++) {
+      const rdmIdx = random[i];
+      if (choicesEliminated === 2) break;
+      else if (answers[rdmIdx] !== this.props.correct) {
+        answers[rdmIdx] = '';
+        choicesEliminated += 1;
+      }
+    }
+    this.setState({answers, fiftyFifty: true});
   }
 
   handleAnswered(evt) {
@@ -35,23 +57,48 @@ export default class Answers extends Component {
     this.setState({ modalIsOpen: true });
   }
 
+  openPhoneAFriend() {
+    this.setState({ isPhoneAFriendOpen: true });
+  }
+
+  openAskAudience(){
+    this.setState({ isAskAudienceOpen: true });
+  }
+
   closeModal() {
     this.setState({ modalIsOpen: false, answered: true });
   }
+
+  goBack() {
+    this.setState({ modalIsOpen: false });
+  }
+
+  closePhoneAFriend() {
+    this.setState({ isPhoneAFriendOpen: false, phoneAFriend: true });
+  }
+
+  closeAskAudience() {
+    this.setState({ isAskAudienceOpen: false, askAudience: true });
+  }
   
   render() {
-    const {answers, modalIsOpen, answered, myChoice } = this.state;
-    const {onClickNext, currIdx, checkAnswer} = this.props;
+    const { answers, modalIsOpen, answered, myChoice, fiftyFifty, phoneAFriend, askAudience, isPhoneAFriendOpen, isAskAudienceOpen } = this.state;
+    const { onClickNext, currIdx, checkAnswer } = this.props;
     const multiChoice = ['A', 'B', 'C', 'D'];
     return (
       <div className='choices-container'>
         {answers.map((answer,i) => (
           <div key={answer} className={`choice-container ${multiChoice[i]}`}>
-            <button className="invi" onClick={evt => {checkAnswer(evt); this.handleAnswered(evt); this.openModal()}}>
-             <h5 className='choice' value={answer}><span className='letter'>{multiChoice[i]}: </span> {answer}</h5>
+            <button className="invi" disabled={answered} onClick={evt => {checkAnswer(evt); this.handleAnswered(evt); this.openModal()}}>
+              <h5 className={`choice ${answered && myChoice === answer && myChoice.length > 0 ? 'chosen' : ''} ${answered && this.props.correct === answer ? 'correct' : ''} ${answered ? '' : 'hov'} `} value={answer}><span className='letter' value={answer}>{multiChoice[i]}: </span> {answer}</h5>
             </button>
           </div>
         ))}
+        <div className="lifelines">
+            <button disabled={fiftyFifty || answered} className={`icon half ${fiftyFifty ? 'disabled' : ''}`} onClick={() => this.handleFiftyFifty()}>50:50</button>
+            <button disabled={phoneAFriend || answered} className={`icon ${phoneAFriend ? 'disabled' : ''}`} onClick={() => this.openPhoneAFriend()}><IoIosCall /></button>
+            <button disabled={askAudience || answered} className={`icon ${askAudience ? 'disabled' : ''}`} onClick={() => this.openAskAudience()}><IoIosPeople /></button>
+        </div>
 
         {answered ? 
         <div className="check">
@@ -65,10 +112,33 @@ export default class Answers extends Component {
        <Modal
           isOpen={modalIsOpen}
           style={customStyles}
+          shouldCloseOnOverlayClick={false}
           onRequestClose={() => this.closeModal()}
-          contentLabel="Example Modal"
+          contentLabel="You Sure? Modal"
+          ariaHideApp={false}
         >
-          <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer'}} onClick={() => {this.closeModal()}}>Final Answer?</button>
+          <div className="modalHeader" style={{fontSize: '1.3em', fontWeight: '600', textAlign: 'center', paddingBottom: '20px'}}>Is that your final answer?</div>
+          <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer', padding: '5px'}} onClick={() => {this.closeModal()}}>Yes</button>
+          <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer', padding: '5px'}} onClick={() => {this.goBack()}}>No</button>
+
+        </Modal>
+        <Modal
+          isOpen={isPhoneAFriendOpen}
+          style={customStyles}
+          onRequestClose={() => this.closePhoneAFriend()}
+          contentLabel="Friend Modal"
+          ariaHideApp={false}
+        >
+          <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer'}} onClick={() => {this.closePhoneAFriend()}}>Call someone random in your contacts</button>
+        </Modal>
+        <Modal
+          isOpen={isAskAudienceOpen}
+          style={customStyles}
+          onRequestClose={() => this.closeAskAudience()}
+          contentLabel="Audience Modal"
+          ariaHideApp={false}
+        >
+          <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer'}} onClick={() => {this.closeAskAudience()}}>Survey everyone in the room. <br /> <br/> Audience we need your help!</button>
         </Modal>
       </div>
     )
@@ -78,8 +148,8 @@ export default class Answers extends Component {
 const customStyles = {
   content: {
     background: '#000034',
-    width: '200px',
-    height: '100px',
+    width: '250px',
+    height: '150px',
     top: '50%',
     left: '50%',
     right: 'auto',
@@ -90,6 +160,8 @@ const customStyles = {
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
+    border: 'none',
+    boxShadow: '12px 12px 16px 0 rgba(0, 0, 0, 0.25), -8px -8px 12px 0 rgba(255, 255, 255, 0.3)'
   },
 
 };

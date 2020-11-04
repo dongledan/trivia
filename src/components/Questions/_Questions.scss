@@ -1,15 +1,29 @@
 .question-container {
-
   .question {
     width: 100%;
+
+    .score {
+      font-size: 1.3em;
+      text-align: center;
+      font-weight: 500;
+    }
 
     .answers-container {
       width: 74%;
       margin: auto;
+
+      @include between {
+        width: 100%;
+      }
       .choices-container {
         display: flex;
         flex-wrap: wrap;
-        flex-direction: row;
+
+        @include mobile {
+          flex-direction: column;
+          align-items: flex-start;
+          margin: 0 20px;
+        }
 
         .choice-container {
           width: 50%;
@@ -20,8 +34,50 @@
             padding: 10px 20px;
           }
         }
+
+        .lifelines {
+          display: flex;
+          align-items: center;
+          margin: 10px 0;
+          width: 100%;
+          justify-content: center;
+
+          @include mobile {
+            justify-content: flex-start;
+          }
+        
+          .icon {
+            font-size: 2em;
+            width: 60px;
+            height: 60px;
+            background: #234057;
+            border: 2px solid #c9cbe1;
+            color: #ea6400;         
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            margin: 10px;
+            outline: none;
+
+            &:hover {
+              background: $orange;
+              color: #000;
+              border: 2px solid $green;
+            }
+          }
+
+          .half {
+            font-size: 1.188em;
+          }
+
+          .disabled {
+            opacity: 0.3;
+          }
+        }
+
         .check {
-          margin-top: 20px;
           font-size: 1.188em;
           line-height: 1.5em;
           width: 100%;
@@ -30,6 +86,10 @@
 
           .next-btn-container {
             margin: 20px auto;
+          }
+
+          @include mobile {
+            text-align: left;
           }
         }
       }
