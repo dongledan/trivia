@@ -15,9 +15,11 @@ export default class Questions extends Component {
       currIdx: 0,
       currentQ: {},
       score: 0,
+      myChoice: ''
     }
     this.onClickNext = this.onClickNext.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
+    this.setChoice = this.setChoice.bind(this);
   }
 
   componentDidMount() {
@@ -28,6 +30,12 @@ export default class Questions extends Component {
     this.setState({questions: chosen, currentQ: current});
   }
 
+  setChoice(evt) {
+    const myChoice = evt.target.getAttribute('value');
+    this.setState({myChoice});
+
+  }
+
   onClickNext(idx) {
     setTimeout(() => {
       const currIdx = idx + 1;
@@ -36,21 +44,21 @@ export default class Questions extends Component {
     }, 100);
   }
 
-  checkAnswer(evt) {
-    if (evt.target.getAttribute('value') === this.state.currentQ.correct) {
+  checkAnswer() {
+    if (this.state.myChoice === this.state.currentQ.correct) {
       const score = this.state.score + 1;
       this.setState({score});
     }
   }
 
   render() {
-    const { currentQ, currIdx, score } = this.state;
+    const { currentQ, currIdx, score, myChoice } = this.state;
     const {setPlayingTrivia} = this.props;
     
     return (
       <div className='question-container'>
         {currentQ ? 
-          <Question currentQ={currentQ} currIdx={currIdx} onClickNext={this.onClickNext} score={score} checkAnswer={this.checkAnswer} />
+          <Question currentQ={currentQ} currIdx={currIdx} onClickNext={this.onClickNext} score={score} checkAnswer={this.checkAnswer} setChoice={this.setChoice} />
           :
           <Results score={score} setPlayingTrivia={setPlayingTrivia}/>
         }

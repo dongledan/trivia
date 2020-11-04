@@ -83,13 +83,13 @@ export default class Answers extends Component {
   
   render() {
     const { answers, modalIsOpen, answered, myChoice, fiftyFifty, phoneAFriend, askAudience, isPhoneAFriendOpen, isAskAudienceOpen } = this.state;
-    const { onClickNext, currIdx, checkAnswer } = this.props;
+    const { onClickNext, currIdx, checkAnswer, setChoice } = this.props;
     const multiChoice = ['A', 'B', 'C', 'D'];
     return (
       <div className='choices-container'>
         {answers.map((answer,i) => (
           <div key={answer} className={`choice-container ${multiChoice[i]}`}>
-            <button className="invi" disabled={answered} onClick={evt => {checkAnswer(evt); this.handleAnswered(evt); this.openModal()}}>
+            <button className="invi" disabled={answered} onClick={evt => { setChoice(evt); this.handleAnswered(evt); this.openModal()}}>
               <h5 className={`choice ${answered && myChoice === answer && myChoice.length > 0 ? 'chosen' : ''} ${answered && this.props.correct === answer ? 'correct' : ''} ${answered ? '' : 'hov'} `} value={answer}><span className='letter' value={answer}>{multiChoice[i]}: </span> {answer}</h5>
             </button>
           </div>
@@ -118,7 +118,7 @@ export default class Answers extends Component {
           ariaHideApp={false}
         >
           <div className="modalHeader" style={{fontSize: '1.3em', fontWeight: '600', textAlign: 'center', paddingBottom: '20px'}}>Is that your final answer?</div>
-          <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer', padding: '5px'}} onClick={() => {this.closeModal()}}>Yes</button>
+          <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer', padding: '5px'}} onClick={() => {this.closeModal(); checkAnswer()}}>Yes</button>
           <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer', padding: '5px'}} onClick={() => {this.goBack()}}>No</button>
 
         </Modal>

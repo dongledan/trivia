@@ -12,14 +12,14 @@ export default class Question extends Component {
   }
 
   render() {
-    const { currentQ, currIdx, onClickNext, checkAnswer, score } = this.props;
+    const { currentQ, currIdx, onClickNext, checkAnswer, score, setChoice } = this.props;
     return (
       <div className="question">
           <div className="score">You got <span className="actual">{score}</span> correct</div>
           <h3>{currIdx+1}. {currentQ.question}</h3>
           <div className="answers-container">
           {currentQ.incorrect ?
-          <Answers incorrect={currentQ.incorrect} correct={currentQ.correct} onClickNext={onClickNext} currIdx={currIdx} checkAnswer={checkAnswer}/>
+          <Answers incorrect={currentQ.incorrect} correct={currentQ.correct} onClickNext={onClickNext} currIdx={currIdx} checkAnswer={checkAnswer} setChoice={setChoice} />
           :
           <div />
 
