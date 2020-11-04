@@ -19,6 +19,13 @@ export default function InitialScreen(props) {
         <li>
           When the answer is selected, a new slide appears, click the word NEXT to move to the next question.
         </li>
+        <li>There are three lifelines that can be used once per game:
+          <ul>
+            <li>50:50 - eliminates 2 incorrect choices.</li>
+            <li>Phone a Friend - ask or call a friend for help.</li>
+            <li>Ask the Audience - collect answers from nearby individuals.</li>
+          </ul>
+        </li>
         <li>
           The game is over when 10 questions have been answered. Thank you for playing Who Wants To Answer 10 Questions!
         </li>

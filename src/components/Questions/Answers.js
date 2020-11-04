@@ -29,7 +29,7 @@ export default class Answers extends Component {
     setTimeout(() => {
       const answers = shuffle(this.props.incorrect, this.props.correct);
       this.setState({answers});
-    }, 100);
+    }, 200);
   }
 
   handleFiftyFifty() {
@@ -69,6 +69,10 @@ export default class Answers extends Component {
     this.setState({ modalIsOpen: false, answered: true });
   }
 
+  goBack() {
+    this.setState({ modalIsOpen: false });
+  }
+
   closePhoneAFriend() {
     this.setState({ isPhoneAFriendOpen: false, phoneAFriend: true });
   }
@@ -86,7 +90,7 @@ export default class Answers extends Component {
         {answers.map((answer,i) => (
           <div key={answer} className={`choice-container ${multiChoice[i]}`}>
             <button className="invi" disabled={answered} onClick={evt => {checkAnswer(evt); this.handleAnswered(evt); this.openModal()}}>
-              <h5 className={`choice ${answered && myChoice === answer && myChoice.length > 0 ? 'chosen' : ''} ${answered && this.props.correct === answer ? 'correct' : ''}`} value={answer}><span className='letter' value={answer}>{multiChoice[i]}: </span> {answer}</h5>
+              <h5 className={`choice ${answered && myChoice === answer && myChoice.length > 0 ? 'chosen' : ''} ${answered && this.props.correct === answer ? 'correct' : ''} ${answered ? '' : 'hov'} `} value={answer}><span className='letter' value={answer}>{multiChoice[i]}: </span> {answer}</h5>
             </button>
           </div>
         ))}
@@ -108,16 +112,22 @@ export default class Answers extends Component {
        <Modal
           isOpen={modalIsOpen}
           style={customStyles}
+          shouldCloseOnOverlayClick={false}
           onRequestClose={() => this.closeModal()}
           contentLabel="You Sure? Modal"
+          ariaHideApp={false}
         >
-          <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer'}} onClick={() => {this.closeModal()}}>Final Answer?</button>
+          <div className="modalHeader" style={{fontSize: '1.3em', fontWeight: '600', textAlign: 'center', paddingBottom: '20px'}}>Is that your final answer?</div>
+          <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer', padding: '5px'}} onClick={() => {this.closeModal()}}>Yes</button>
+          <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer', padding: '5px'}} onClick={() => {this.goBack()}}>No</button>
+
         </Modal>
         <Modal
           isOpen={isPhoneAFriendOpen}
           style={customStyles}
           onRequestClose={() => this.closePhoneAFriend()}
           contentLabel="Friend Modal"
+          ariaHideApp={false}
         >
           <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer'}} onClick={() => {this.closePhoneAFriend()}}>Call someone random in your contacts</button>
         </Modal>
@@ -126,6 +136,7 @@ export default class Answers extends Component {
           style={customStyles}
           onRequestClose={() => this.closeAskAudience()}
           contentLabel="Audience Modal"
+          ariaHideApp={false}
         >
           <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer'}} onClick={() => {this.closeAskAudience()}}>Survey everyone in the room. <br /> <br/> Audience we need your help!</button>
         </Modal>
@@ -149,6 +160,8 @@ const customStyles = {
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
+    border: 'none',
+    boxShadow: '12px 12px 16px 0 rgba(0, 0, 0, 0.25), -8px -8px 12px 0 rgba(255, 255, 255, 0.3)'
   },
 
 };

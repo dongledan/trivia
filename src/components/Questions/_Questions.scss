@@ -2,6 +2,12 @@
   .question {
     width: 100%;
 
+    .score {
+      font-size: 1.3em;
+      text-align: center;
+      font-weight: 500;
+    }
+
     .answers-container {
       width: 74%;
       margin: auto;

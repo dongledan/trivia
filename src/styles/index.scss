@@ -2,6 +2,7 @@
 @import 'colors';
 
 @import '../components/Header';
+@import '../components/Navbar';
 @import '../components/InitialScreen';
 @import '../components/Questions/Questions';
 @import '../components/Questions/Results';
@@ -28,8 +29,6 @@ h3 {
   background-image: url(../images/question.png);
   background-repeat: no-repeat;
   background-position: center center;
-  display: table;
-  vertical-align: middle;
   font-size: 17px;
   line-height: 22px;
   min-height: 80px;
@@ -45,6 +44,7 @@ h3 {
     justify-content: flex-start;
     width: calc(100% - 20px);
     padding-left: 20px;
+    background-image: none;
   }
 }
 
@@ -53,7 +53,6 @@ h5 {
   background-repeat: no-repeat;
   background-position: 0 0;
   background-size: 100% 310px;
-  display: table;
   width: 340px;
   text-align: left;
   font-size: 17px;
@@ -62,11 +61,13 @@ h5 {
   font-family: Arial,Verdana,"Helvetica CY",sans-serif;
   margin: 5px auto;
   color: #fff;
-  opacity: 0.9;
+  cursor: pointer;
+}
 
+.hov {
   &:hover {
-    cursor: pointer;
-    opacity: 1;
+    background-position: 0 -51px;
+    color: #000;
   }
 }
 

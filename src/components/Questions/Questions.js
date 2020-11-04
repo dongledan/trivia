@@ -45,12 +45,14 @@ export default class Questions extends Component {
 
   render() {
     const { currentQ, currIdx, score } = this.state;
+    const {setPlayingTrivia} = this.props;
+    
     return (
       <div className='question-container'>
         {currentQ ? 
           <Question currentQ={currentQ} currIdx={currIdx} onClickNext={this.onClickNext} score={score} checkAnswer={this.checkAnswer} />
           :
-          <Results score={score} />
+          <Results score={score} setPlayingTrivia={setPlayingTrivia}/>
         }
     </div>
     )   
