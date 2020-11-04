@@ -51,8 +51,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 * The correct answer must be revealed after a user has submitted their answer A user can see the score they received at the end of the round
 
 ### Known Issues
-* Clicking on individual letter vs answer will throw an error
-* Once clicking on an answer choice, there is no possibility to go back
+
+- [x] Clicking on individual letter vs answer will throw an error
+- [x] Once clicking on an answer choice, there is no possibility to go back
 
 ### Future Updates
 * Adding a countdown timer for each question to increase pressure for no reason
