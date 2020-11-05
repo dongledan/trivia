@@ -18,6 +18,7 @@ body {
   background: $pacificblue;
   color: #fff;
   transition: ease-in 0.1s;
+  padding: 0 10px;
 }
 
 code {
@@ -43,7 +44,6 @@ h3 {
   @include mobile {
     justify-content: flex-start;
     width: calc(100% - 20px);
-    padding-left: 20px;
     background-image: none;
   }
 }
@@ -90,11 +90,20 @@ h5 {
   outline: none;
   border: none;
   padding-right: 39px;
+
+  @include mobile {
+    padding-right: 0;
+  }
 }
 
 img {
   width: 200px;
   height: auto;
+  margin-bottom: 20px;
+
+  @include mobile {
+    width: 100px;
+  }
 }
 
 .mine {

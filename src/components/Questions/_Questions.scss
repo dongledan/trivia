@@ -22,7 +22,6 @@
         @include mobile {
           flex-direction: column;
           align-items: flex-start;
-          margin: 0 20px;
         }
 
         .choice-container {
@@ -47,7 +46,8 @@
           }
         
           .icon {
-            font-size: 2em;
+            font-size: 1.188em;
+            font-weight: 600;
             width: 60px;
             height: 60px;
             background: #234057;
@@ -60,20 +60,19 @@
             cursor: pointer;
             margin: 10px;
             outline: none;
+          }
 
+          .disabled {
+            opacity: 0.3;
+            cursor: default;
+          }
+
+          .hover {
             &:hover {
               background: $orange;
               color: #000;
               border: 2px solid $green;
             }
-          }
-
-          .half {
-            font-size: 1.188em;
-          }
-
-          .disabled {
-            opacity: 0.3;
           }
         }
 
