@@ -95,9 +95,9 @@ export default class Answers extends Component {
           </div>
         ))}
         <div className="lifelines">
-            <button disabled={fiftyFifty || answered} className={`icon half ${fiftyFifty ? 'disabled' : ''}`} onClick={() => this.handleFiftyFifty()}>50:50</button>
-            <button disabled={phoneAFriend || answered} className={`icon ${phoneAFriend ? 'disabled' : ''}`} onClick={() => this.openPhoneAFriend()}><IoIosCall /></button>
-            <button disabled={askAudience || answered} className={`icon ${askAudience ? 'disabled' : ''}`} onClick={() => this.openAskAudience()}><IoIosPeople /></button>
+            <button disabled={fiftyFifty || answered} className={`icon ${fiftyFifty || answered ? 'disabled' : 'hover'}`} onClick={() => this.handleFiftyFifty()}>50:50</button>
+            <button disabled={phoneAFriend || answered} className={`icon ${phoneAFriend || answered ? 'disabled' : 'hover'}`} onClick={() => this.openPhoneAFriend()}><IoIosCall size={30}/></button>
+            <button disabled={askAudience || answered} className={`icon ${askAudience || answered ? 'disabled' : 'hover'}`} onClick={() => this.openAskAudience()}><IoIosPeople size={30}/></button>
         </div>
 
         {answered ? 
@@ -116,6 +116,7 @@ export default class Answers extends Component {
           onRequestClose={() => this.closeModal()}
           contentLabel="You Sure? Modal"
           ariaHideApp={false}
+          shouldCloseOnEsc={false}
         >
           <div className="modalHeader" style={{fontSize: '1.3em', fontWeight: '600', textAlign: 'center', paddingBottom: '20px'}}>Is that your final answer?</div>
           <button className="modalText" style={{background: 'none', outline: 'none', border: 'none', color: '#e3a638', fontSize: '1.188em', lineHeigh: '1.5em', cursor: 'pointer', padding: '5px'}} onClick={() => {this.closeModal(); checkAnswer()}}>Yes</button>

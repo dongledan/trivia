@@ -52,7 +52,7 @@ export default class Questions extends Component {
   }
 
   render() {
-    const { currentQ, currIdx, score, myChoice } = this.state;
+    const { currentQ, currIdx, score } = this.state;
     const {setPlayingTrivia} = this.props;
     
     return (

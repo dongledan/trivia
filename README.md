@@ -54,13 +54,15 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 - [x] Clicking on individual letter vs answer will throw an error
 - [x] Once clicking on an answer choice, there is no possibility to go back
+- [ ] Issue with missing icons/backgrounds with mobile (Safari)
 
 ### Future Updates
 * Adding a countdown timer for each question to increase pressure for no reason
+* Ability to choose topic (ie questions centered around programming, animals, sports, etc.)
+* Add scoring feature that rewards quick answering, multiplier when getting questions right in a row
 * Highscore table
-* Add 50/50, phone a friend, ask the audience using socket.io(?) features
 * More questions, graphics with fun facts relating to the question
-* More Responsiveness-- not compatible with mobile
+* Responsive design
 * Tests, tests, tests, and more tests
 
 Now I know the top speed of house cat is 31mph (wow!) & a bison and cow hybrid combo is called a beefalo (hilarious!). Thanks <b>Who Wants To Answer 10 Questions</b>! This hot new trivia game changed my life, and it can change yours too!
