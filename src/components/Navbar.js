@@ -5,7 +5,7 @@ export default function Navbar(props) {
   return (
     <div className="navbar-container">
       <navbar className="navbar">
-        <div className="title">WWTA10Q</div>
+        <a className="title" href='https://dannyboy.dev/' rel='noopener noreferrer' target='_blank'>WWTA10Q</a>
         <button className='button exit-btn' onClick={() => setPlayingTrivia(false)}>Exit</button>
       </navbar>
     </div>

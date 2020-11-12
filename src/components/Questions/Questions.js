@@ -6,7 +6,6 @@ import { shuffle } from '../../utils';
 import Question from './Question';
 import Results from './Results';
 
-
 export default class Questions extends Component {
   constructor(props) {
     super(props);
@@ -56,7 +55,7 @@ export default class Questions extends Component {
     const {setPlayingTrivia} = this.props;
     
     return (
-      <div className='question-container'>
+      <div className='question-container main'>
         {currentQ ? 
           <Question currentQ={currentQ} currIdx={currIdx} onClickNext={this.onClickNext} score={score} checkAnswer={this.checkAnswer} setChoice={this.setChoice} />
           :
