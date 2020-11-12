@@ -14,7 +14,12 @@
     .title {
       font-size: 1.3em;
       font-weight: 600;
-      cursor: default;
+      text-decoration: none;
+      color: $orange;
+      
+      &:hover {
+        color: $green;
+      }
     }
   
     .exit-btn {
